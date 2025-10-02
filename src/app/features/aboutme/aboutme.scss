@@ -1,23 +1,31 @@
 @use 'tokens' as *;
 
-.perfil {
-  text-align: center;
-  padding: 2rem;
+.perfil-grid {
+  display: flex;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
 
-  .foto {
-    width: 150px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
+  .columna {
+    flex: 1;
+    padding: $spacing-md;
+    background-color: $color-secondary;
+    border-radius: $border-radius-sm;
+    box-shadow: $box-shadow-sm;
   }
 
-  h1 {
-    font-size: 2rem;
-    color: $color-primary;
-  }
+  .perfil-personal {
+    text-align: center;
 
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    .foto {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: $spacing-sm;
+    }
+
+    h1 {
+      color: $color-primary;
+      font-size: $font-size-title;
+    }
   }
 
   ul {
@@ -25,10 +33,25 @@
     padding: 0;
 
     li {
-      background: $color-secondary;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      border-radius: 4px;
+      margin-bottom: $spacing-sm;
+      background-color: lighten($color-secondary, 5%);
+      padding: $spacing-sm;
+      border-radius: $border-radius-sm;
     }
+  }
+}
+
+.habilidades ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: $spacing-sm;
+  padding: 0;
+  list-style: none;
+
+  li {
+    background-color: lighten($color-secondary, 5%);
+    padding: $spacing-sm;
+    border-radius: $border-radius-sm;
+    text-align: center;
   }
 }
