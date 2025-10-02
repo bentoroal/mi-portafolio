@@ -1,0 +1,15 @@
+<div class="perfil">
+  <img [src]="usuario.fotoUrl" alt="Foto de {{ usuario.nombre }}" class="foto" />
+  <h1>{{ usuario.nombre }}</h1>
+  <p>{{ usuario.presentacion }}</p>
+
+  <h3>Habilidades destacadas:</h3>
+  <ul>
+    <li *ngFor="let skill of usuario.habilidades">{{ skill }}</li>
+  </ul>
+
+    <h3>Experiencia Laboral:</h3>
+  <ul>
+    <li *ngFor="let exp of usuario.expLaboral">{{ exp }}</li>
+  </ul>
+</div>

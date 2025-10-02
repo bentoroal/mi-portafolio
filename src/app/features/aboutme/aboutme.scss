@@ -1,0 +1,34 @@
+@use 'tokens' as *;
+
+.perfil {
+  text-align: center;
+  padding: 2rem;
+
+  .foto {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: $color-primary;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      background: $color-secondary;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+  }
+}
