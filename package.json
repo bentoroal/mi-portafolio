@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+     "build": "ng build --base-href 'https://bentoroal.github.io/mi-portafolio/'",
+    "deploy": "ng build --base-href 'https://bentoroal.github.io/mi-portafolio/' && npx angular-cli-ghpages --dir=dist/mi-portafolio --repo=https://github.com/bentoroal/mi-portafolio.git",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -33,10 +34,12 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^20.3.4",
     "@angular/build": "^20.1.6",
     "@angular/cli": "^20.1.6",
     "@angular/compiler-cli": "^20.1.0",
     "@types/jasmine": "~5.1.0",
+    "angular-cli-ghpages": "^2.0.3",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
