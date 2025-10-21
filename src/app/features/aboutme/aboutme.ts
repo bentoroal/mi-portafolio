@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './aboutme.html',
-  styleUrl: './aboutme.scss'
+  styleUrls: ['./aboutme.scss']   // <-- corregido (array)
 })
 export class AboutMeComponent {
   usuario = {
@@ -20,5 +20,4 @@ export class AboutMeComponent {
     email: 'ben.toroal@gmail.com',
     telefono: '+569 54899794'
   }
-
 }

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-experience',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './experience.html',
-  styleUrl: './experience.scss'
+  styleUrls: ['./experience.scss']
 })
-export class Experience {
-
-}
+export class ExperienceComponent {}
