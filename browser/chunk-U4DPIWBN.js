@@ -1,1 +1,0 @@
-import{Qa as o,Ra as p,_a as i,rb as r,za as t}from"./chunk-W2UZ4LTW.js";var c=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-experience"]],decls:2,vars:0,template:function(e,s){e&1&&(o(0,"p"),i(1,"experience works!"),p())},dependencies:[r],encapsulation:2})};export{c as ExperienceComponent};
