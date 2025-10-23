@@ -1,18 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { routes } from './app.routes';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { SidebarComponent } from './core/sidebar/sidebar';
 
+//Para subur a git pages usar comando npm run deploy
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    BrowserModule,
-    RouterModule,       
-    SidebarComponent,
+    RouterModule,
+    SidebarComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']

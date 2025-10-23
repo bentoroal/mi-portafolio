@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-     "build": "ng build --base-href 'https://bentoroal.github.io/mi-portafolio/'",
-    "deploy": "ng build --base-href 'https://bentoroal.github.io/mi-portafolio/' && npx angular-cli-ghpages --dir=dist/mi-portafolio --repo=https://github.com/bentoroal/mi-portafolio.git",
+    "build": "ng build --base-href=\"https://bentoroal.github.io/mi-portafolio/\"",
+    "deploy": "ng build --output-path=dist/mi-portafolio --base-href=/mi-portafolio/ && npx angular-cli-ghpages --dir=dist/mi-portafolio",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -23,21 +23,21 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^20.1.0",
-    "@angular/compiler": "^20.1.0",
-    "@angular/core": "^20.1.0",
-    "@angular/forms": "^20.1.0",
-    "@angular/platform-browser": "^20.1.0",
-    "@angular/router": "^20.1.0",
+    "@angular/animations": "^20.3.2",
+    "@angular/common": "^20.3.2",
+    "@angular/compiler": "^20.3.2",
+    "@angular/core": "^20.3.2",
+    "@angular/forms": "^20.3.2",
+    "@angular/platform-browser": "^20.3.2",
+    "@angular/router": "^20.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "^0.15.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^20.3.4",
-    "@angular/build": "^20.1.6",
-    "@angular/cli": "^20.1.6",
-    "@angular/compiler-cli": "^20.1.0",
+    "@angular/cli": "^20.3.3",
+    "@angular/compiler-cli": "^20.3.2",
     "@types/jasmine": "~5.1.0",
     "angular-cli-ghpages": "^2.0.3",
     "jasmine-core": "~5.8.0",
