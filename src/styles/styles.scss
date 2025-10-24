@@ -1,6 +1,10 @@
 @use 'tokens' as *;
 @use 'animations' as *;
 
+html {
+  scrollbar-gutter: stable; /* Reserva espacio para la scrollbar */
+}
+
 
 @font-face {
   font-family: 'MiSans';

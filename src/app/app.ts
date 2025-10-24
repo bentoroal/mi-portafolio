@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { SidebarComponent } from './core/sidebar/sidebar';
 
-//Para subur a git pages usar comando npm run deploy
+//Para subir a git pages usar comando npm run deploy
 @Component({
   selector: 'app-root',
   standalone: true,

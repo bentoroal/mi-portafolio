@@ -1,7 +1,8 @@
 :host {
   display: flex;
-  height: 100vh;
-  overflow: hidden;
+  height: auto;
+  min-height: 100vh;
+  overflow: visible; // permite que el body maneje el scroll
   animation: fadeIn 300ms ease-in-out;
 }
 
@@ -16,18 +17,38 @@
   }
 }
 
+/* Sidebar fijo */
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 250px;
+  height: 100vh;
   flex-shrink: 0;
 }
 
+/* Contenido principal fluido */
 .main-content {
+  margin-left: 250px;
   flex: 1;
-  overflow-y: auto;
   padding: 1rem;
+  overflow: visible; // evita scrollbar interno
+  min-height: 100vh;
 }
 
+/* Evita saltos cuando aparece la barra de scroll */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Adaptación móvil */
 @media (max-width: 800px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
   .main-content {
     margin-left: 0;
     padding: 16px;

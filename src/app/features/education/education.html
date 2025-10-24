@@ -1,2 +1,31 @@
-<h2>Educación</h2>
-<p>Aquí puedes listar tus estudios, certificaciones y fechas.</p>
+<div class="education-container">
+  <h1>Educación</h1>
+
+  <app-card-item
+    [title]="'Analista Programador'"
+    [institution]="'INACAP'"
+    [period]="'2022 – 2024'"
+    [description]="
+      'Formación técnica intensiva en desarrollo de software, programación web y móvil, bases de datos e infraestructura tecnológica. El plan de estudios se basa en metodologías ágiles y aprendizaje práctico, abordando proyectos reales y desafíos progresivos. Se fortalecen habilidades en análisis de requerimientos, diseño de sistemas, trabajo colaborativo y comunicación efectiva, junto con competencias transversales como innovación, ética profesional y aprendizaje continuo.'
+    "
+    [achievements]="[
+      'Reconocimiento a la excelencia académica durante el primer año.',
+      'Egresado en el puesto N°1 del ranking de su generación.'
+    ]"
+    [isPrimary]="true"
+  ></app-card-item>
+
+  <app-card-item
+    [title]="'Derecho'"
+    [institution]="'Universidad Andrés Bello'"
+    [period]="'2010 – 2017'"
+    [description]="
+      'Formación jurídica integral con énfasis en derecho civil, penal, constitucional y procesal. Complementada con habilidades en argumentación, redacción jurídica y análisis crítico. El programa incluyó la preparación y aprobación del examen de grado, consolidando competencias para el ejercicio profesional, la litigación y la asesoría legal en diversos contextos públicos y privados.'
+    "
+    [achievements]="[
+      'Egresado en el lugar N°27 de un total de 309 alumnos de la generación.',
+      'Aprobación del examen de grado como parte del proceso final de titulación.'
+    ]"
+    [collapsible]="true"
+  ></app-card-item>
+</div>

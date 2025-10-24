@@ -1,0 +1,40 @@
+<div class="card-item" [class.primary]="isPrimary">
+  @if (!collapsible) {
+    <div>
+      <h2>{{ title }}</h2>
+      <h3>{{ institution }} · {{ period }}</h3>
+      <p>{{ description }}</p>
+
+      @if (achievements.length > 0) {
+        <div class="achievements">
+          <h4>Logros destacados</h4>
+          <ul>
+            @for (item of achievements; track $index) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  }
+
+  @if (collapsible) {
+    <details>
+      <summary>
+        <strong>{{ title }}</strong> · {{ institution }} · {{ period }}
+      </summary>
+      <p>{{ description }}</p>
+
+      @if (achievements.length > 0) {
+        <div class="achievements">
+          <h4>Logros destacados</h4>
+          <ul>
+            @for (item of achievements; track $index) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </details>
+  }
+</div>
