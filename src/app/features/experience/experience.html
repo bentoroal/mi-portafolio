@@ -1,1 +1,32 @@
-<p>experience works!</p>
+<div class="experience-section">
+  <h1>Experiencia Laboral</h1>
+
+  <app-card-item
+    [title]="'Desarrollador Full Stack Freelance'"
+    [institution]="'Aela SpA'"
+    [period]="'2024 – 2025'"
+    [description]="
+      'Desarrollo de aplicaciones móviles y sistemas web como parte de proyectos freelance para Aela SPA, combinando tecnologías modernas y enfoque Full Stack.'
+    "
+      [achievements]="[
+      'Desarrollo de App de clima: integración con GPS y API meteorológica, alertas personalizadas y diseño moderno.',
+      'Implementación de sistema web para gestión de clientes y generación automatizada de escritos judiciales, utilizando plantillas dinámicas y validación de datos.',
+      'Desarrollo de App de juego de mesa tipo “Pasapalabra”: experiencia audiovisual interactiva y lógica de juego.'
+    ]"
+    [isPrimary]="true"
+  ></app-card-item>
+
+  <app-card-item
+    [title]="'Práctica Profesional Desarrollador Full Stack'"
+    [institution]="'Isamax'"
+    [period]="'2025'"
+    [description]="
+      'Desarrollo de aplicación web, frontend y backend, junto a Base de Datos y Apis de aplicación de transporte de pasajeros'"
+    [achievements]="[
+      'Integración de herramientas de Google Cloud (Auth y Maps )',
+      'Implementación de georeferenciación de usuarios para coordinar viajes',
+      'Evaluación: “Excelente profesional, capaz de proponer soluciones avanzadas y desarrollo adicionales a los solicitados en todas las áreas, siempre dispuesto a recibir las críticas constructivas y mejorarlas de forma inmediata.”'
+    ]"
+    [collapsible]="true"
+  ></app-card-item>
+</div>

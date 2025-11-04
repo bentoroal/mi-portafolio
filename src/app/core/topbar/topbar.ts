@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-topbar',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './sidebar.html',
-  styleUrls: ['./sidebar.scss']
+  templateUrl: './topbar.html',
+  styleUrls: ['./topbar.scss']
 })
-export class SidebarComponent {}
+export class TopbarComponent {}

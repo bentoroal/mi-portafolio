@@ -28,9 +28,9 @@ export const routes: Routes = [
     data: { animation: 'fadeIn' }
   },
   {
-    path: 'knowledge',
+    path: 'drive',
     loadComponent: () =>
-      import('./features/knowledge/knowledge').then(m => m.KnowledgeComponent),
+      import('./features/drive/drive').then(m => m.DriveComponent),
     data: { animation: 'fadeIn' }
   },
   {

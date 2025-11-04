@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-knowledge',
+  selector: 'app-drive',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './knowledge.html',
-  styleUrls: ['./knowledge.scss']
+  templateUrl: './drive.html',
+  styleUrls: ['./drive.scss']
 })
-export class KnowledgeComponent {}
+export class DriveComponent {}

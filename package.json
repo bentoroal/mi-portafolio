@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href=\"https://bentoroal.github.io/mi-portafolio/\"",
-    "deploy": "ng build --output-path=dist/mi-portafolio --base-href=/mi-portafolio/ && npx angular-cli-ghpages --dir=dist/mi-portafolio",
+    "build": "ng build --configuration production",
+    "predeploy": "npm run build -- --configuration production",
+    "deploy": "gh-pages -d dist/mi-portafolio/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

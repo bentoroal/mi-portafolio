@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
-import { SidebarComponent } from './core/sidebar/sidebar';
+import { TopbarComponent } from './core/topbar/topbar';
 
 //Para subir a git pages usar comando npm run deploy
 @Component({
@@ -9,7 +9,7 @@ import { SidebarComponent } from './core/sidebar/sidebar';
   imports: [
     RouterOutlet,
     RouterModule,
-    SidebarComponent
+    TopbarComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']

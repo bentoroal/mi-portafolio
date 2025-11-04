@@ -17,7 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/mi-portafolio",
+              "outputPath": "dist/mi-portafolio",
+              "baseHref": "/mi-portafolio/",
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]},
             "tsConfig": "tsconfig.app.json",

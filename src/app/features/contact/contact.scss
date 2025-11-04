@@ -1,4 +1,54 @@
-/* estilos básicos para la sección Contacto */
-:host { display:block; }
-h2 { margin-top: 0; }
-p { margin: 6px 0; color: rgba(0,0,0,0.85); }
+@use 'tokens' as *;
+
+.contact-section {
+  text-align: center;
+  padding: $spacing-lg;
+  animation: fadeIn 300ms ease-in-out;
+
+  h1 {
+    color: $color-primary;
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    color: $color-text;
+    margin-bottom: $spacing-lg;
+    font-size: 1rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
+
+  .contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: $color-primary;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: $font-weight-medium;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: $color-accent;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    &.linkedin {
+      background: #0a66c2; // color oficial LinkedIn
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+  }
+}

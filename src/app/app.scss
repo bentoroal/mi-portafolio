@@ -1,56 +1,19 @@
+:root {
+  --topbar-height: 64px;
+}
+
 :host {
   display: flex;
-  height: auto;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: visible; // permite que el body maneje el scroll
-  animation: fadeIn 300ms ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Sidebar fijo */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100vh;
-  flex-shrink: 0;
-}
-
-/* Contenido principal fluido */
 .main-content {
-  margin-left: 250px;
   flex: 1;
   padding: 1rem;
-  overflow: visible; // evita scrollbar interno
-  min-height: 100vh;
+  padding-top: calc(var(--topbar-height) + 16px); /* agrega 16px extra de aire */
+  background: var(--main-bg, #f8f9fa);
+  overflow-y: auto;
 }
 
-/* Evita saltos cuando aparece la barra de scroll */
-html {
-  scrollbar-gutter: stable;
-}
-
-/* Adaptación móvil */
-@media (max-width: 800px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-
-  .main-content {
-    margin-left: 0;
-    padding: 16px;
-  }
-}
+/* elimina/ignora cualquier .sidebar {} aquí */

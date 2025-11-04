@@ -1,0 +1,44 @@
+@use 'tokens' as *;
+
+.resources-section {
+  text-align: center;
+  padding: $spacing-lg;
+  animation: fadeIn 400ms ease-in-out;
+
+  h1 {
+    color: $color-primary;
+    margin-bottom: $spacing-md;
+    font-weight: $font-weight-bold;
+  }
+
+  p {
+    max-width: 600px;
+    margin: 0 auto $spacing-lg;
+    color: $color-text;
+    line-height: 1.6;
+  }
+
+  .drive-button {
+    display: inline-block;
+    background: $color-primary;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: $font-weight-medium;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: $color-accent;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
