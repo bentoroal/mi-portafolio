@@ -12,8 +12,8 @@ type SkillGroup = { categoria: string; items: string[] };
 })
 export class SkillsComponent {
   skills: SkillGroup[] = [
-    { categoria: 'Lenguajes', items: ['Python', 'Javascript', 'Java', 'PHP', 'Kotlin'] },
-    { categoria: 'Frameworks', items: ['React', 'Django', 'Angular', 'Next'] },
+    { categoria: 'Lenguajes', items: ['Python', 'Javascript', 'Typescript', 'Java', 'PHP', 'Kotlin'] },
+    { categoria: 'Frameworks y Entornos', items: ['React', 'Django', 'Angular', 'Next', 'Node.js'] },
     { categoria: 'Bases de datos', items: ['MySQL', 'MongoDB'] },
     { categoria: 'Desarrollo Web', items: ['HTML', 'CSS', 'Bootstrap'] },
     { categoria: 'Herramientas', items: ['Visual Studio Code', 'Android Studio', 'GitHub', 'AWS', 'Google Cloud'] },
