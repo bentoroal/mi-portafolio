@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-type SkillGroup = { categoria: string; items: string[] };
+import { SkillsService, SkillGroup } from '../../services/skills.service'; // ajusta el path si es necesario
 
 @Component({
   selector: 'app-skills-section',
@@ -10,13 +9,14 @@ type SkillGroup = { categoria: string; items: string[] };
   templateUrl: './skills.html',
   styleUrls: ['./skills.scss']
 })
-export class SkillsComponent {
-  skills: SkillGroup[] = [
-    { categoria: 'Lenguajes', items: ['Python', 'Javascript', 'Typescript', 'Java', 'PHP', 'Kotlin'] },
-    { categoria: 'Frameworks y Entornos', items: ['React', 'Django', 'Angular', 'Next', 'Node.js'] },
-    { categoria: 'Bases de datos', items: ['MySQL', 'MongoDB'] },
-    { categoria: 'Desarrollo Web', items: ['HTML', 'CSS', 'Bootstrap'] },
-    { categoria: 'Herramientas', items: ['Visual Studio Code', 'Android Studio', 'GitHub', 'AWS', 'Google Cloud'] },
-    { categoria: 'Idiomas', items: ['Español (Nativo)', 'Inglés (Avanzado)'] }
-  ];
+export class SkillsComponent implements OnInit {
+  skills: SkillGroup[] = [];
+
+  constructor(private skillsService: SkillsService) {}
+
+  ngOnInit(): void {
+    this.skillsService.getSkills().subscribe(data => {
+      this.skills = data;
+    });
+  }
 }
