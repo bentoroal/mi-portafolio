@@ -19,21 +19,21 @@ html, body {
 
 @font-face {
   font-family: 'MiSans';
-  src: url('/fonts/misans_regular.ttf') format('truetype');
+  src: url('../assets/fonts/misans_regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MiSans';
-  src: url('/fonts/misans_medium.ttf') format('truetype');
+  src: url('../assets/fonts/misans_medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MiSans';
-  src: url('/fonts/misans_bold.ttf') format('truetype');
+  src: url('../assets/fonts/misans_bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
