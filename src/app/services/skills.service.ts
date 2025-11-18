@@ -8,7 +8,7 @@ export type SkillGroup = { categoria: string; items: string[] };
 
 @Injectable({ providedIn: 'root' })
 export class SkillsService {
-  private apiUrl = 'https://skills-api.onrender.com/api/skills'; // tu endpoint público
+  private apiUrl = 'https://skills-api-spdq.onrender.com/api/skills'; // tu endpoint público
 
   constructor(private http: HttpClient) {}
 

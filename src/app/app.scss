@@ -10,10 +10,11 @@
 
 .main-content {
   flex: 1;
+  position: relative; 
   padding: 1rem;
   padding-top: calc(var(--topbar-height) + 16px); /* agrega 16px extra de aire */
   background: var(--main-bg, #f8f9fa);
   overflow-y: auto;
 }
 
-/* elimina/ignora cualquier .sidebar {} aquí */
+

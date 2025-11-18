@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { TopbarComponent } from './core/topbar/topbar';
+import { HintComponent } from './core/hint/hint';
 
 //Para subir a git pages usar comando npm run deploy
 @Component({
@@ -9,7 +10,8 @@ import { TopbarComponent } from './core/topbar/topbar';
   imports: [
     RouterOutlet,
     RouterModule,
-    TopbarComponent
+    TopbarComponent,
+    HintComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']

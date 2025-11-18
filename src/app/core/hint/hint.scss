@@ -1,0 +1,32 @@
+.hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: #4f46e5; /* indigo-600 */
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(79,70,229,0.18);
+  border: none;
+  cursor: pointer;
+  z-index: 10002;
+}
+
+/* Estilos del contenido si quieres control adicional */
+.tippy-content h4 {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.95rem;
+}
+.tippy-content p {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.85rem;
+}
+.tippy-content a {
+  color: #4f46e5;
+  text-decoration: underline;
+  font-size: 0.85rem;
+}
