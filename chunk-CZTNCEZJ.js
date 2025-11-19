@@ -1,1 +1,0 @@
-import{K as e,i as n}from"./chunk-XVUHMZVT.js";var r=class t{_hint$=new n(null);hint$=this._hint$.asObservable();setHint(i){this._hint$.next(i)}static \u0275fac=function(a){return new(a||t)};static \u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"})};export{r as a};
