@@ -1,101 +1,78 @@
-import {
-  Component,
-  AfterViewInit,
-  OnDestroy,
-  ViewChild,
-  ElementRef,
-  NgZone,
-  Inject,
-  PLATFORM_ID
-} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { filter } from 'rxjs/operators';
+import { HintService, HintPayload } from './hint.service';
 import { Subscription } from 'rxjs';
-import tippy, { Instance } from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
 
 @Component({
   selector: 'app-hint',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './hint.html',
   styleUrls: ['./hint.scss']
 })
-export class HintComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('helpBtn', { static: true }) helpBtn!: ElementRef<HTMLButtonElement>;
-  @ViewChild('contentDefault', { static: true }) contentDefault!: ElementRef<HTMLElement>;
-  @ViewChild('contentAbout', { static: true }) contentAbout!: ElementRef<HTMLElement>;
-  @ViewChild('contentEducation', { static: true }) contentEducation!: ElementRef<HTMLElement>;
-  @ViewChild('contentExperience', { static: true }) contentExperience!: ElementRef<HTMLElement>;
-  @ViewChild('contentSkills', { static: true }) contentSkills!: ElementRef<HTMLElement>;
-  @ViewChild('contentDrive', { static: true }) contentDrive!: ElementRef<HTMLElement>;
-  @ViewChild('contentContact', { static: true }) contentContact!: ElementRef<HTMLElement>;
+export class HintComponent implements OnDestroy {
+  open = false;
+  title = '';
+  info = '';
+  tech: string[] = [];
+  extra = 'Adicionalmente contiene tiene este botón de ayuda flotante de la que explica un poco mas de detalle el funcionamiento de cada sección y las tecnologias utilizadas '; 
+  private sub: Subscription;
 
-  private tippyInstance: Instance | null = null;
-  private routeSub: Subscription | null = null;
-  private isBrowser: boolean;
-
-  constructor(
-    private router: Router,
-    private ngZone: NgZone,
-    @Inject(PLATFORM_ID) platformId: Object
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
-  }
-
-  ngAfterViewInit() {
-    if (!this.isBrowser) return;
-
-    this.ngZone.runOutsideAngular(() => {
-      this.tippyInstance = tippy(this.helpBtn.nativeElement, {
-        content: this.getContentForUrl(this.router.url).cloneNode(true) as HTMLElement, // clonar para no mover el nodo angular
-        allowHTML: true,
-        interactive: true,
-        placement: 'bottom-end',
-        animation: 'shift-away',
-        theme: 'light-border',
-        maxWidth: 360,
-        trigger: 'click',              // abre con click por defecto
-        appendTo: document.body        // evita problemas de stacking / clipping por parents
-        });
-    });
-
-    this.routeSub = this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const newContent = this.getContentForUrl(event.urlAfterRedirects);
-        this.updateContent(newContent);
-        // descomentarlo si quieres que abra siempre al navegar:
-        // this.tippyInstance?.show();
+  constructor(private router: Router, private hint: HintService) {
+    this.sub = this.hint.hint$.subscribe((p: HintPayload | null) => {
+      if (p) {
+        this.title = p.title || '';
+        this.info = p.text || '';
+        this.tech = p.tech || [];
+        this.extra = p.extra || ''; // si tu HintService envía `extra`
+      } else {
+        this.title = this.info = '';
+        this.tech = [];
+        this.extra = '';
       }
     });
-  }
 
-  private getContentForUrl(url: string): HTMLElement {
-    // Ajusta estos prefijos según tus rutas reales
-    if (url.startsWith('/about')) return this.contentAbout.nativeElement;
-    if (url.startsWith('/education')) return this.contentEducation.nativeElement;
-    if (url.startsWith('/experience')) return this.contentExperience.nativeElement;
-    if (url.startsWith('/skills')) return this.contentSkills.nativeElement;
-    if (url.startsWith('/drive')) return this.contentDrive.nativeElement;
-    if (url.startsWith('/contact')) return this.contentContact.nativeElement;
-    if (url === '/' || url.startsWith('/home')) return this.contentAbout.nativeElement;
-    return this.contentDefault.nativeElement;
-  }
-
-  private updateContent(newContent: HTMLElement) {
-    if (!this.tippyInstance) return;
-    this.ngZone.runOutsideAngular(() => {
-        // usa cloneNode para mantener el template original en el DOM
-        this.tippyInstance?.setContent(newContent.cloneNode(true) as HTMLElement);
+    this.setInfoFromUrl(this.router.url);
+    this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe((ev: any) => {
+      this.setInfoFromUrl(ev.urlAfterRedirects);
+      // cerrar panel al navegar
+      this.open = false;
     });
-    }
+  }
 
   toggle() {
-    if (!this.tippyInstance) return;
-    if (this.tippyInstance.state.isShown) this.tippyInstance.hide();
-    else this.tippyInstance.show();
+    this.open = !this.open;
+  }
+
+  close() {
+    this.open = false;
+  }
+
+  private setInfoFromUrl(url: string) {
+    switch (true) {
+      case url.includes('/about'):
+        this.info = 'Aquí encontrarás una breve presentación profesional y enlaces a mis proyectos.';
+        break;
+      case url.includes('/education'):
+        this.info = 'Detalles de mi formación académica y certificaciones.';
+        break;
+      case url.includes('/experience'):
+        this.info = 'Resumen de cargos y proyectos relevantes donde trabajé.';
+        break;
+      case url.includes('/skills'):
+        this.info = 'Lista de tecnologías y habilidades técnicas que manejo.';
+        break;
+      case url.includes('/contact'):
+        this.info = 'Formas de contactarme: email y teléfono.';
+        break;
+      default:
+        this.info = 'Sección del portafolio.';
+    }
   }
 
   ngOnDestroy() {
-    this.routeSub?.unsubscribe();
-    this.tippyInstance?.destroy();
+    this.sub?.unsubscribe();
   }
 }

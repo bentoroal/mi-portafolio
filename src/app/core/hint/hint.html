@@ -1,59 +1,31 @@
 <!-- Botón flotante -->
-<button #helpBtn
-  class="hint"
-  aria-label="Acerca de esta página"
-  (click)="toggle()">
+<button class="hint-btn"
+  aria-expanded="{{open}}"
+  (click)="toggle()"
+  title="Información de la página">
   ?
 </button>
 
-<!-- Templates ocultos con el contenido para diferentes rutas -->
-<!-- tippy usará el elemento DOM como contenido (allowHTML + elemento ref) -->
-<!-- Default -->
-<div #contentDefault class="tippy-content" style="display:none;">
-  <h4>Acerca de esta página</h4>
-  <p>Este sitio muestra información general y enlaces importantes.</p>
-  <p><strong>Tecnologías</strong>: Angular; TypeScript; Tailwind</p>
-  <a href="/contacto">Contactar</a>
-</div>
+<div class="hint-panel"
+  *ngIf="open"
+  role="dialog"
+  aria-label="Información de la página">
+  <div class="hint-header">
+    <strong>{{ title || 'Ayuda' }}</strong>
+    <button class="close"
+      (click)="close()"
+      aria-label="Cerrar">
+      ✕
 
-<!-- About -->
-<div #contentAbout class="tippy-content" style="display:none;">
-  <h4>Bienvenido</h4>
-  <p>Portfolio personal. Aquí presento proyectos recientes y habilidades.</p>
-  <p><strong>Tecnologías</strong>: Angular; SCSS; GCP Auth</p>
-</div>
-
-<!-- Educacion -->
-<div #contentEducation class="tippy-content" style="display:none;">
-  <h4>Seccion de Educación</h4>
-  <p>Esta vista muestra las carreras completadas junto a su detalle y logros academicos.</p>
-  <p><strong>Tecnologías</strong>: Angular; TypeScript, Elementos tipo Card personalizados desplegables al click</p>
-</div>
-
-<!-- Experiencia -->
-<div #contentExperience class="tippy-content" style="display:none;">
-  <h4>Seccion de Experiencia Laboral</h4>
-  <p>Esta vista muestra las experiencias laborales junto a su detalle y logros.</p>
-  <p><strong>Tecnologías</strong>: Angular; TypeScript, Elementos tipo Card personalizados desplegables al click</p>
-</div>
-
-<!-- Habilidades -->
-<div #contentSkills class="tippy-content" style="display:none;">
-  <h4>Seccion de Habilidades</h4>
-  <p>Esta vista muestra las habilidades y conocimientos del area TI.</p>
-  <p><strong>Tecnologías</strong>: Angular; TypeScript para la parte front y conexion al backend a traves de una API creada en Express, usando Typescript. Se obtienen las habilidades desde la api y se muestran ordenadas en grids en forma de badges para mayor atractivo visual. Ademas estas cambian de color al posar el cursor sobre cada una</p>
-</div>
-
-<!-- Recursos-->
-<div #contentDrive class="tippy-content" style="display:none;">
-  <h4>Seccion de Recursos</h4>
-  <p>Esta vista muestra un enlace directo al Portafolio alojado en Google Drive, pudiendo acceder a imagenes, animaciones y videos de los proyectos realizados.</p>
-  <p><strong>Tecnologías</strong>: Angular; TypeScript, Elementos tipo boton que lleva a la carpeta Google Drive</p>
-</div>
-
-<!-- Contacto -->
-<div #contentContact class="tippy-content" style="display:none;">
-  <h4>Seccion de Contacto</h4>
-  <p>Esta vista muestra 2 enlaces, uno para enviar un correo y otro para acceder al perfil de LinkedIn.</p>
-  <p><strong>Tecnologías</strong>: Angular; TypeScript, Elementos tipo botón para acceder a los links</p>
+    </button>
+  </div>
+  <div class="hint-body">
+    <p *ngIf="info">
+      {{ info }}<span class="hint-extra" *ngIf="extra">. {{ extra }}</span>
+    </p>
+    <div *ngIf="tech.length">
+      <strong>Tecnologías:</strong>
+      <ul><li *ngFor="let t of tech">{{ t }}</li></ul>
+    </div>
+  </div>
 </div>
