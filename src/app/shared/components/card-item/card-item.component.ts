@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 
 export class CardItemComponent {
+  //Los inputs corresponden a las propiedades que el componente puede recibir desde su componente padre cuando lo invoque
   @Input() title = '';
   @Input() institution = '';
   @Input() period = '';
