@@ -15,7 +15,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   constructor(
     private skillsService: SkillsService,
-    private hint: HintService // <-- agregado
+    private hint: HintService
   ) {}
   // Método para inicializar el componente y cargar las habilidades desde el servicio. parte del ciclo de vida del componente
   ngOnInit(): void {
