@@ -1,0 +1,26 @@
+<div class="projects-grid">
+	<section *ngFor="let p of projects" class="project-card">
+		<div class="project-main">
+			<div class="logo-box">
+				<img *ngIf="p.logoFile" class="project-logo" [src]="'assets/project-logos/' + p.logoFile" [alt]="p.title" />
+				<div *ngIf="!p.logoFile" class="logo-placeholder">{{ p.title }}</div>
+			</div>
+
+			<div class="content">
+				<h3>{{ p.title }}</h3>
+				<h4>{{ p.subtitle }}</h4>
+				<p class="desc">{{ p.description }}</p>
+
+				<div class="links">
+					<a *ngIf="p.repoFrontUrl" class="btn repo front" [href]="p.repoFrontUrl" target="_blank" rel="noopener">Repo Frontend</a>
+					<a *ngIf="p.repoBackUrl" class="btn repo back" [href]="p.repoBackUrl" target="_blank" rel="noopener">Repo Backend</a>
+					<a *ngIf="!p.repoFrontUrl && p.repoUrl" class="btn repo" [href]="p.repoUrl" target="_blank" rel="noopener">Repositorio</a>
+					<a *ngIf="p.apkUrl" class="btn apk" [href]="p.apkUrl" target="_blank" rel="noopener">APK / Descarga</a>
+					<a *ngIf="p.driveUrl" class="btn drive" [href]="p.driveUrl" target="_blank" rel="noopener">Carpeta Drive</a>
+					<a *ngIf="p.siteUrl" class="btn site" [href]="p.siteUrl" target="_blank" rel="noopener">Página</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+

@@ -34,6 +34,12 @@ export const routes: Routes = [
     data: { animation: 'fadeIn' }
   },
   {
+    path: 'projects',
+    loadComponent: () =>
+      import('./features/projects/projects').then(m => m.ProjectsComponent),
+    data: { animation: 'fadeIn' }
+  },
+  {
     path: 'contact',
     loadComponent: () =>
       import('./features/contact/contact').then(m => m.ContactComponent),
