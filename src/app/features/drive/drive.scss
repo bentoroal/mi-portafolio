@@ -41,4 +41,38 @@
       gap: 8px;
     }
   }
+  .github-button {
+    display: inline-block;
+    background: $color-primary;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: $font-weight-medium;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: $color-accent;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    /* separacion horizontal cuando estan en la misma linea */
+    margin-left: 12px;
+  }
+
+  /* En pantallas pequeñas apilar botones y centrar */
+  @media (max-width: 520px) {
+    .drive-button,
+    .github-button {
+      display: block;
+      margin: 8px auto;
+    }
+  }
 }
