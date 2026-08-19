@@ -1,16 +1,33 @@
 <section class="skills-section">
-  <h1>Habilidades Técnicas</h1>
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="accent-line"></div>
+      <h1>Habilidades Técnicas</h1>
+      <p class="section-subtitle">Tecnologías y herramientas con las que trabajo</p>
+    </div>
 
-  <div class="skills-grid">
-    @for (grupo of skills; track grupo.categoria) {
-      <article class="skill-card">
-        <h3>{{ grupo.categoria }}</h3>
-        <div class="badges">
-          @for (item of grupo.items; track item) {
-            <span class="badge">{{ item }}</span>
-          }
-        </div>
-      </article>
-    }
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      @for (grupo of skills; track grupo.categoria; let i = $index) {
+        <article class="skill-category-card" [attr.data-index]="i" animate-enter="slideInUp">
+          <!-- Category Header -->
+          <div class="category-header">
+            <h3>{{ grupo.categoria }}</h3>
+            <span class="item-count">{{ grupo.items.length }}</span>
+          </div>
+
+          <!-- Skills Badges -->
+          <div class="skills-badges">
+            @for (item of grupo.items; track item; let j = $index) {
+              <span class="skill-badge" [style.animation-delay]="(i * 100 + j * 30) + 'ms'">
+                {{ item }}
+              </span>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
   </div>
 </section>

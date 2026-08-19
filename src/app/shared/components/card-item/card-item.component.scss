@@ -1,52 +1,244 @@
+@use 'tokens' as *;
+
+:host {
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ============================================
+// CARD ITEM
+// ============================================
+
 .card-item {
-  background: #f9f9f9;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-  margin-bottom: 2rem;
-  text-align: justify;
+  background: white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  box-shadow: $box-shadow-md;
+  transition: all $transition-base;
+  margin-bottom: $spacing-2xl;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
 
-  p {
-    text-align: justify;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $color-accent, $color-accent-light);
+    opacity: 0;
+    transition: opacity $transition-fast;
   }
 
-  ul {
-    text-align: justify;
-  }
+  &:hover {
+    box-shadow: $box-shadow-lg;
+    transform: translateX(4px);
 
+    &::before {
+      opacity: 1;
+    }
+
+    .job-title {
+      color: $color-accent;
+    }
+  }
 
   &.primary {
-    border-left: 6px solid #007acc;
+    background: linear-gradient(135deg, $color-secondary 0%, rgba(59, 130, 246, 0.05) 100%);
+    border-left-color: $color-accent;
+
+    .job-title {
+      color: $color-primary;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, $color-accent, $color-accent-light);
+      color: white;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius-full;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+// ============================================
+// CARD CONTENT
+// ============================================
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-lg;
+
+  .badge {
+    flex-shrink: 0;
+  }
+}
+
+.job-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin: 0 0 $spacing-sm 0;
+  transition: color $transition-fast;
+}
+
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin: 0;
+  font-size: $font-size-sm;
+  color: $color-text-light;
+
+  .institution {
+    font-weight: $font-weight-semibold;
+    color: $color-accent;
   }
 
-  h2 {
-    margin-bottom: 0.25rem;
+  .separator {
+    opacity: 0.5;
   }
 
-  h3 {
-    margin-top: 0;
-    color: #666;
-    font-weight: 500;
+  .period {
+    color: $color-text-lighter;
   }
+}
 
+.description {
+  font-size: $font-size-base;
+  color: $color-text;
+  line-height: 1.8;
+  margin: 0;
+}
+
+// ============================================
+// ACHIEVEMENTS
+// ============================================
+
+.achievements {
+  margin-top: $spacing-xl;
+  padding-top: $spacing-xl;
+  border-top: 1px solid $color-secondary;
+}
+
+.achievements-title {
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin: 0 0 $spacing-md 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: $font-size-sm;
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.achievement-item {
+  position: relative;
+  padding-left: $spacing-xl;
+  color: $color-text-light;
+  font-size: $font-size-base;
+  line-height: 1.6;
+
+  &::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: $color-success;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-lg;
+  }
+}
+
+// ============================================
+// COLLAPSIBLE
+// ============================================
+
+.collapsible-item {
   summary {
     cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
+    user-select: none;
+    padding: $spacing-md;
+    margin: -$spacing-md;
+    border-radius: $border-radius-md;
+    transition: all $transition-fast;
 
-  .achievements {
-    margin-top: 1rem;
-
-    h4 {
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+    &:hover {
+      background-color: $color-secondary;
     }
 
-    ul {
-      padding-left: 1.2rem;
+    &::-webkit-details-marker {
+      display: none;
     }
   }
+
+  &[open] {
+    summary {
+      background-color: $color-secondary;
+      margin-bottom: $spacing-lg;
+    }
+
+    .summary-icon {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.collapsible-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.summary-icon {
+  color: $color-accent;
+  font-size: $font-size-sm;
+  margin-top: 4px;
+  flex-shrink: 0;
+  transition: transform $transition-fast;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  flex: 1;
+}
+
+.summary-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin: 0;
+}
+
+.summary-meta {
+  font-size: $font-size-sm;
+  color: $color-text-light;
+}
+
+.collapsible-body {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
 }

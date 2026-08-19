@@ -1,29 +1,94 @@
-<div class="perfil-grid">
-  <section class="columna perfil-personal">
-    <img [src]="usuario.fotoUrl" alt="Foto de {{ usuario.nombre }}" class="foto" />
-    <h1>{{ usuario.nombre }}</h1>
-
-    <div class="aboutme">
-      <h3>Sobre mí</h3>
-
-      <p class="presentacion">
-        Soy Benjamin Toro, Analista Programador titulado por INACAP, apasionado por diseñar y crear soluciones web prácticas y mantenibles.
-        Actualmente busco oportunidades en desarrollo de software donde pueda contribuir con código de calidad y seguir aprendiendo día a día.
-      </p>
-
-      <p class="enfoque">
-        Me destaco por la atención al detalle y la curiosidad técnica: disfruto entender el porqué de las decisiones del proyecto, investigar alternativas y propones mejoras que eviten problemas a futuro.
-        Trabajo de forma ordenada y pragmática, priorizando la legibilidad y la confiabilidad del código para facilitar el trabajo en equipo.
-      </p>
-
-      <p class="valores">
-        Además, soy abogado titulado, experiencia que fortaleció mi comunicación escrita y oral, la capacidad para resolver conflictos y la disciplina en el manejo de documentación y procesos.
-        Esa combinación técnica-legal me permite abordar proyectos con una perspectiva práctica y responsable.
-      </p>
-
-      <p class="cierre">
-        Si quieres conocer mi experiencia y habilidades las tengo organizadas en secciones separadas.
-      </p>
+<section class="aboutme-section">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="header-block">
+      <div class="accent-line"></div>
+      <h1 class="title">Sobre Mí</h1>
+      <p class="subtitle">Conoce mi historia y lo que me apasiona del desarrollo de software</p>
     </div>
-  </section>
-</div>
+
+    <!-- Main Grid Layout -->
+    <div class="aboutme-grid">
+      <!-- Left: Profile Card -->
+      <article class="profile-card" animate-enter="slideInLeft">
+        <div class="image-wrapper">
+          <img [src]="usuario.fotoUrl" [alt]="usuario.nombre" class="profile-image" />
+          <div class="image-overlay"></div>
+        </div>
+        
+        <div class="profile-info">
+          <h2>{{ usuario.nombre }}</h2>
+          <p class="role">Desarrollador Full Stack</p>
+          
+          <div class="contact-info">
+            <a [href]="'mailto:' + usuario.email" class="contact-link">
+              <span class="icon">📧</span>
+              <span>{{ usuario.email }}</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Right: Content Sections -->
+      <div class="content-sections" animate-enter="slideInRight">
+        <!-- Section: Presentación -->
+        <article class="info-card">
+          <div class="card-header">
+            <span class="card-icon">✨</span>
+            <h3>Quién soy</h3>
+          </div>
+          <p class="card-text">
+            Soy Benjamin Toro, Analista Programador titulado por INACAP, apasionado por diseñar y crear soluciones web prácticas y mantenibles. 
+            Actualmente busco oportunidades en desarrollo de software donde pueda contribuir con código de calidad y seguir aprendiendo día a día.
+          </p>
+        </article>
+
+        <!-- Section: Enfoque -->
+        <article class="info-card">
+          <div class="card-header">
+            <span class="card-icon">🎯</span>
+            <h3>Mi Enfoque</h3>
+          </div>
+          <p class="card-text">
+            Me destaco por la atención al detalle y la curiosidad técnica: disfruto entender el porqué de las decisiones del proyecto, 
+            investigar alternativas y proponer mejoras que eviten problemas a futuro. Trabajo de forma ordenada y pragmática, 
+            priorizando la legibilidad y confiabilidad del código.
+          </p>
+        </article>
+
+        <!-- Section: Trasfondo -->
+        <article class="info-card">
+          <div class="card-header">
+            <span class="card-icon">⚖️</span>
+            <h3>Experiencia Dual</h3>
+          </div>
+          <p class="card-text">
+            Además, soy abogado titulado, experiencia que fortaleció mi comunicación escrita y oral, la capacidad para resolver conflictos 
+            y la disciplina en el manejo de documentación. Esa combinación técnica-legal me permite abordar proyectos con perspectiva 
+            práctica y responsable.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-grid" animate-enter="fadeIn">
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Titulaciones</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1+</div>
+        <div class="stat-label">Años Experiencia</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Tecnologías</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6+</div>
+        <div class="stat-label">Proyectos</div>
+      </div>
+    </div>
+  </div>
+</section>

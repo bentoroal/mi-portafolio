@@ -1,31 +1,72 @@
-<section class="education-section">
-  <h1>Educación</h1>
+﻿<section class="education-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="accent-line"></div>
+      <h1>Educación Formal</h1>
+      <p class="section-subtitle">Mi formación académica y profesional</p>
+    </div>
 
-  <app-card-item
-    [title]="'Analista Programador'"
-    [institution]="'INACAP'"
-    [period]="'2022 – 2024'"
-    [description]="
-      'Formación técnica intensiva en desarrollo de software, programación web y móvil, bases de datos e infraestructura tecnológica. El plan de estudios se basa en metodologías ágiles y aprendizaje práctico, abordando proyectos reales y desafíos progresivos. Se fortalecen habilidades en análisis de requerimientos, diseño de sistemas, trabajo colaborativo y comunicación efectiva, junto con competencias transversales como innovación, ética profesional y aprendizaje continuo.'
-    "
-    [achievements]="[
-      'Reconocimiento a la excelencia académica durante el primer año.',
-      'Egresado en el puesto N°1 del ranking de su generación.'
-    ]"
-    [isPrimary]="true"
-  ></app-card-item>
+      <app-card-item
+        [title]="'Analista Programador'"
+        [institution]="'INACAP'"
+        [period]="'2022 – 2024'"
+        [description]="'Formación técnica orientada al análisis, diseño y desarrollo de soluciones de software, con énfasis en programación de aplicaciones, bases de datos y desarrollo multiplataforma. La carrera incorpora metodologías ágiles, desarrollo seguro de software, pruebas, mantenimiento e implementación de sistemas, junto con fundamentos de infraestructura y gestión de entornos tecnológicos. La formación se basa en el desarrollo práctico de proyectos y la resolución de problemas, fortaleciendo competencias en programación, bases de datos, trabajo colaborativo, comunicación y aprendizaje continuo, con preparación para desempeñarse en el desarrollo y mantenimiento de aplicaciones informáticas.'"
+        [achievements]="[
+          'Reconocimiento a la excelencia académica durante el primer año.',
+          'Egresado en el puesto N°1 del ranking de su generación.'
+        ]"
+        [isPrimary]="true"
+      ></app-card-item>
 
-  <app-card-item
-    [title]="'Derecho'"
-    [institution]="'Universidad Andrés Bello'"
-    [period]="'2010 – 2017'"
-    [description]="
-      'Formación jurídica integral con énfasis en derecho civil, penal, constitucional y procesal. Complementada con habilidades en argumentación, redacción jurídica y análisis crítico. El programa incluyó la preparación y aprobación del examen de grado, consolidando competencias para el ejercicio profesional, la litigación y la asesoría legal en diversos contextos públicos y privados.'
-    "
-    [achievements]="[
-      'Egresado en el lugar N°27 de un total de 309 alumnos de la generación.',
-      'Aprobación del examen de grado como parte del proceso final de titulación.'
-    ]"
-    [collapsible]="true"
-  ></app-card-item>
+      <app-card-item
+        [title]="'Derecho'"
+        [institution]="'Universidad Andrés Bello'"
+        [period]="'2010 – 2017'"
+        [description]="'Abogado titulado, con formación jurídica integral en derecho civil, penal, constitucional y procesal. Formación complementada con competencias en argumentación jurídica, redacción profesional, análisis normativo y resolución de problemas jurídicos.'"
+        [achievements]="[
+          'Abogado titulado por la Universidad Andrés Bello.',
+          'Egresado en el lugar N°27 de un total de 309 alumnos de la generación.',
+          'Aprobación del examen de grado como parte del proceso final de titulación.'
+        ]"
+        [collapsible]="true"
+      ></app-card-item>
+
+    <!-- Certifications Section -->
+    <div class="certifications-section" animate-enter="fadeIn">
+      <h2>Certificaciones y Cursos</h2>
+      <div class="certifications-grid">
+        <div class="cert-card">
+          <span class="cert-icon">📜</span>
+          <h3>Agile & Scrum</h3>
+          <p>Metodologías ágiles y gestión de proyectos con Scrum</p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-icon">🌐</span>
+          <h3>Full Stack Development</h3>
+          <p>Certificación en desarrollo full stack con tecnologías modernas</p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-icon">💾</span>
+          <h3>Base de Datos</h3>
+          <p>Certificación en diseño y gestión de bases de datos</p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-icon">💻</span>
+          <h3>Desarrollo de Aplicaciones</h3>
+          <p>Certificacion en diseño y desarrollo de aplicaciones web y movil</p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-icon">🤖</span>
+          <h3>Orquestacion de Agentes de IA</h3>
+          <p>Certificacion en orquestacion de agentes de inteligencia artificial con modelos LangChain</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </section>

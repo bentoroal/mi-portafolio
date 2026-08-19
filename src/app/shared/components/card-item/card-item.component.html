@@ -1,16 +1,29 @@
-<div class="card-item" [class.primary]="isPrimary">
+<article class="card-item" [class.primary]="isPrimary" [class.collapsible]="collapsible">
   @if (!collapsible) {
-    <div>
-      <h2>{{ title }}</h2>
-      <h3>{{ institution }} · {{ period }}</h3>
-      <p>{{ description }}</p>
+    <div class="card-content">
+      <!-- Header -->
+      <div class="card-header">
+        <div>
+          <h2 class="job-title">{{ title }}</h2>
+          <p class="job-meta">
+            <span class="institution">{{ institution }}</span>
+            <span class="separator">•</span>
+            <span class="period">{{ period }}</span>
+          </p>
+        </div>
+        <div class="badge" *ngIf="isPrimary">Destacado</div>
+      </div>
 
+      <!-- Description -->
+      <p class="description">{{ description }}</p>
+
+      <!-- Achievements -->
       @if (achievements.length > 0) {
         <div class="achievements">
-          <h4>Logros destacados</h4>
-          <ul>
+          <h4 class="achievements-title">Logros Destacados</h4>
+          <ul class="achievements-list">
             @for (item of achievements; track $index) {
-              <li>{{ item }}</li>
+              <li class="achievement-item">{{ item }}</li>
             }
           </ul>
         </div>
@@ -19,22 +32,29 @@
   }
 
   @if (collapsible) {
-    <details>
-      <summary>
-        <strong>{{ title }}</strong> · {{ institution }} · {{ period }}
-      </summary>
-      <p>{{ description }}</p>
-
-      @if (achievements.length > 0) {
-        <div class="achievements">
-          <h4>Logros destacados</h4>
-          <ul>
-            @for (item of achievements; track $index) {
-              <li>{{ item }}</li>
-            }
-          </ul>
+    <details class="collapsible-item">
+      <summary class="collapsible-summary">
+        <span class="summary-icon">►</span>
+        <div class="summary-content">
+          <strong class="summary-title">{{ title }}</strong>
+          <span class="summary-meta">{{ institution }} · {{ period }}</span>
         </div>
-      }
+      </summary>
+      
+      <div class="collapsible-body">
+        <p class="description">{{ description }}</p>
+
+        @if (achievements.length > 0) {
+          <div class="achievements">
+            <h4 class="achievements-title">Logros Destacados</h4>
+            <ul class="achievements-list">
+              @for (item of achievements; track $index) {
+                <li class="achievement-item">{{ item }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
     </details>
   }
-</div>
+</article>

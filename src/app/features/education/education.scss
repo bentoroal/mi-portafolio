@@ -1,15 +1,131 @@
 @use 'sass:color';
 @use 'tokens' as *;
 
+:host {
+  animation: fadeIn 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .education-section {
-  padding: $spacing-lg;
-  max-width: 1000px;
+  padding: $spacing-4xl $spacing-lg;
+  background: linear-gradient(135deg, #fafbfc 0%, $color-secondary 100%);
+
+  @media (max-width: 768px) {
+    padding: $spacing-3xl $spacing-md;
+  }
+
+  @media (max-width: 480px) {
+    padding: $spacing-2xl $spacing-md;
+  }
+}
+
+.container {
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+// ============================================
+// SECTION HEADER
+// ============================================
+
+.section-header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .accent-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, $color-accent, $color-accent-light);
+    border-radius: $border-radius-full;
+    margin: 0 auto $spacing-lg;
+  }
 
   h1 {
-    text-align: center;
-    margin-bottom: $spacing-lg;
-    color: $color-text;
+    font-size: $font-size-4xl;
     font-weight: $font-weight-bold;
+    color: $color-primary;
+    margin-bottom: $spacing-md;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: $font-size-lg;
+    color: $color-text-light;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+
+// ============================================
+// CERTIFICATIONS SECTION
+// ============================================
+
+.certifications-section {
+  animation: slideInUp 800ms cubic-bezier(0.4, 0, 0.2, 1) 600ms both;
+
+  h2 {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-2xl;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+.cert-card {
+  background: white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  text-align: center;
+  box-shadow: $box-shadow-sm;
+  border-top: 4px solid $color-accent;
+  transition: all $transition-base;
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:nth-child(1) { animation-delay: 700ms; }
+  &:nth-child(2) { animation-delay: 800ms; }
+  &:nth-child(3) { animation-delay: 900ms; }
+  &:nth-child(4) { animation-delay: 1000ms; }
+
+  &:hover {
+    box-shadow: $box-shadow-lg;
+    transform: translateY(-8px);
+    border-top-color: $color-accent-dark;
+
+    .cert-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+  }
+
+  .cert-icon {
+    display: inline-block;
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-md;
+    transition: all $transition-fast;
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $color-text-lighter;
+    line-height: 1.6;
   }
 }

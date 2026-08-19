@@ -1,8 +1,10 @@
 
+// ✨ ANIMACIONES MODERNAS Y ELEGANTES
+
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -10,10 +12,10 @@
   }
 }
 
-@keyframes slideLeft {
+@keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(-24px);
   }
   to {
     opacity: 1;
@@ -21,10 +23,32 @@
   }
 }
 
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.92);
   }
   to {
     opacity: 1;
@@ -32,29 +56,79 @@
   }
 }
 
-@keyframes testZoom {
-  from {
-    opacity: 0;
-    transform: scale(0.5) rotate(10deg);
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
   }
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
   }
 }
 
-[animate-enter="testZoom"] {
-  animation: testZoom 600ms ease-out;
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+// Aplicación de animaciones
 [animate-enter="fadeIn"] {
-  animation: fadeIn 300ms ease-out;
+  animation: fadeIn 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[animate-enter="slideLeft"] {
-  animation: slideLeft 300ms ease-out;
+[animate-enter="slideInLeft"] {
+  animation: slideInLeft 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[animate-enter="slideInRight"] {
+  animation: slideInRight 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[animate-enter="slideInUp"] {
+  animation: slideInUp 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [animate-enter="scaleIn"] {
-  animation: scaleIn 300ms ease-out;
+  animation: scaleIn 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Utilidades de animación
+.animate-float {
+  animation: floatUp 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulseGlow 2s infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
 }

@@ -6,15 +6,25 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 }
 
 .main-content {
   flex: 1;
   position: relative; 
-  padding: 1rem;
-  padding-top: calc(var(--topbar-height) + 16px); /* agrega 16px extra de aire */
-  background: var(--main-bg, #f8f9fa);
+  padding: 0;
+  padding-top: 80px;
+  background: white;
   overflow-y: auto;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding-top: 70px;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 65px;
+  }
 }
 
 

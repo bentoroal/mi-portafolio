@@ -1,16 +1,30 @@
-<nav class="topbar">
-  <div class="brand">
-    <h2>Benjamin Toro</h2>
+﻿<nav class="topbar" [class.scroll]="isScrolled" [class.menu-open]="isMenuOpen">
+  <div class="container">
+    <div class="brand">
+      <span class="logo-icon">✨</span>
+      <h2>Benjamin Toro</h2>
+      <span class="subtitle">Developer</span>
+    </div>
+    
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger" (click)="toggleMenu()" [attr.aria-label]="'Menú de navegación'">
+      <span class="hamburger-line line-1"></span>
+      <span class="hamburger-line line-2"></span>
+      <span class="hamburger-line line-3"></span>
+    </button>
+    
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a routerLink="/about" routerLinkActive="active" (click)="onNavigate()">Sobre mí</a></li>
+      <li><a routerLink="/education" routerLinkActive="active" (click)="onNavigate()">Educación</a></li>
+      <li><a routerLink="/experience" routerLinkActive="active" (click)="onNavigate()">Experiencia</a></li>
+      <li><a routerLink="/skills" routerLinkActive="active" (click)="onNavigate()">Habilidades</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active" (click)="onNavigate()">Proyectos</a></li>
+      <li><a routerLink="/drive" routerLinkActive="active" (click)="onNavigate()">Recursos</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="onNavigate()" class="cta-link">Contacto</a></li>
+    </ul>
   </div>
-  <ul>
-    <li><a routerLink="/about" routerLinkActive="active">Sobre mí</a></li>
-    <li><a routerLink="/education" routerLinkActive="active">Educación</a></li>
-    <li><a routerLink="/experience" routerLinkActive="active">Experiencia</a></li>
-    <li><a routerLink="/skills" routerLinkActive="active">Habilidades</a></li>
-    <li><a routerLink="/drive" routerLinkActive="active">Recursos</a></li>
-    <li><a routerLink="/projects" routerLinkActive="active">Proyectos</a></li>
-    <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
-  </ul>
-  <!-- Comentado para evitar que el hint quede dentro del topbar -->
-  <!-- <app-hint></app-hint> -->
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
 </nav>

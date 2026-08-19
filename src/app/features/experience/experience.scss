@@ -1,15 +1,133 @@
 @use 'sass:color';
 @use 'tokens' as *;
 
+:host {
+  animation: fadeIn 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .experience-section {
-  padding: $spacing-lg;
-  max-width: 1000px;
+  padding: $spacing-4xl $spacing-lg;
+  background: linear-gradient(135deg, $color-secondary 0%, #f1f5f9 100%);
+
+  @media (max-width: 768px) {
+    padding: $spacing-3xl $spacing-md;
+  }
+
+  @media (max-width: 480px) {
+    padding: $spacing-2xl $spacing-md;
+  }
+}
+
+.container {
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+// ============================================
+// SECTION HEADER
+// ============================================
+
+.section-header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .accent-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, $color-accent, $color-accent-light);
+    border-radius: $border-radius-full;
+    margin: 0 auto $spacing-lg;
+  }
 
   h1 {
-    text-align: center;
-    margin-bottom: $spacing-lg;
-    color: $color-text;
+    font-size: $font-size-4xl;
     font-weight: $font-weight-bold;
+    color: $color-primary;
+    margin-bottom: $spacing-md;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: $font-size-lg;
+    color: $color-text-light;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+
+// ============================================
+// EXPERIENCE SKILLS SECTION
+// ============================================
+
+.experience-skills {
+  background: white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-3xl;
+  box-shadow: $box-shadow-md;
+  animation: fadeIn 800ms cubic-bezier(0.4, 0, 0.2, 1) 400ms both;
+
+  @media (max-width: 768px) {
+    padding: $spacing-2xl;
+  }
+
+  h2 {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-2xl;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tech-category {
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  h3 {
+    font-size: $font-size-lg;
+    color: $color-primary;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 2px solid $color-secondary;
+  }
+
+  &:nth-child(1) { animation-delay: 500ms; }
+  &:nth-child(2) { animation-delay: 600ms; }
+  &:nth-child(3) { animation-delay: 700ms; }
+  &:nth-child(4) { animation-delay: 800ms; }
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.tech-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-dark 100%);
+  color: $color-primary;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+  cursor: default;
+
+  &:hover {
+    background: linear-gradient(135deg, $color-accent, $color-accent-light);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: $box-shadow-md;
   }
 }

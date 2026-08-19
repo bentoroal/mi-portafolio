@@ -1,26 +1,73 @@
-<div class="projects-grid">
-	<section *ngFor="let p of projects" class="project-card">
-		<div class="project-main">
-			<div class="logo-box">
-				<img *ngIf="p.logoFile" class="project-logo" [src]="'assets/project-logos/' + p.logoFile" [alt]="p.title" />
-				<div *ngIf="!p.logoFile" class="logo-placeholder">{{ p.title }}</div>
-			</div>
-
-			<div class="content">
-				<h3>{{ p.title }}</h3>
-				<h4>{{ p.subtitle }}</h4>
-				<p class="desc">{{ p.description }}</p>
-
-				<div class="links">
-					<a *ngIf="p.repoFrontUrl" class="btn repo front" [href]="p.repoFrontUrl" target="_blank" rel="noopener">Repo Frontend</a>
-					<a *ngIf="p.repoBackUrl" class="btn repo back" [href]="p.repoBackUrl" target="_blank" rel="noopener">Repo Backend</a>
-					<a *ngIf="!p.repoFrontUrl && p.repoUrl" class="btn repo" [href]="p.repoUrl" target="_blank" rel="noopener">Repositorio</a>
-					<a *ngIf="p.apkUrl" class="btn apk" [href]="p.apkUrl" target="_blank" rel="noopener">APK / Descarga</a>
-					<a *ngIf="p.driveUrl" class="btn drive" [href]="p.driveUrl" target="_blank" rel="noopener">Carpeta Drive</a>
-					<a *ngIf="p.siteUrl" class="btn site" [href]="p.siteUrl" target="_blank" rel="noopener">Página</a>
-				</div>
-			</div>
+<section class="projects-section">
+	<div class="container">
+		<!-- Header -->
+		<div class="section-header">
+			<div class="accent-line"></div>
+			<h1>Mis Proyectos</h1>
+			<p class="section-subtitle">Trabajos destacados y soluciones desarrolladas</p>
 		</div>
-	</section>
-</div>
+
+		<!-- Projects Grid -->
+		<div class="projects-grid">
+			@for (p of projects; track p.title; let i = $index) {
+				<article class="project-card" [attr.data-index]="i" animate-enter="slideInUp">
+					<!-- Project Header -->
+					<div class="project-header">
+						<div class="logo-container">
+							<img *ngIf="p.logoFile" [src]="'assets/project-logos/' + p.logoFile" [alt]="p.title" class="project-logo" />
+							<div *ngIf="!p.logoFile" class="logo-placeholder">
+								{{ p.title.substring(0, 2) }}
+							</div>
+						</div>
+						<div class="title-section">
+							<h3>{{ p.title }}</h3>
+							<p class="subtitle">{{ p.subtitle }}</p>
+						</div>
+					</div>
+
+					<!-- Description -->
+					<p class="description">{{ p.description }}</p>
+
+					<!-- Links Section -->
+					<div class="links-section">
+						<a *ngIf="p.repoFrontUrl" [href]="p.repoFrontUrl" target="_blank" rel="noopener" class="link-btn frontend">
+							<span class="icon">💻</span>
+							<span>Frontend</span>
+						</a>
+						<a *ngIf="p.repoBackUrl" [href]="p.repoBackUrl" target="_blank" rel="noopener" class="link-btn backend">
+							<span class="icon">⚙️</span>
+							<span>Backend</span>
+						</a>
+						<a *ngIf="!p.repoFrontUrl && p.repoUrl" [href]="p.repoUrl" target="_blank" rel="noopener" class="link-btn repo">
+							<span class="icon">📦</span>
+							<span>Repositorio</span>
+						</a>
+						<a *ngIf="p.apkUrl" [href]="p.apkUrl" target="_blank" rel="noopener" class="link-btn apk">
+							<span class="icon">📱</span>
+							<span>APK</span>
+						</a>
+						<a *ngIf="p.driveUrl" [href]="p.driveUrl" target="_blank" rel="noopener" class="link-btn drive">
+							<span class="icon">☁️</span>
+							<span>Drive</span>
+						</a>
+						<a *ngIf="p.siteUrl" [href]="p.siteUrl" target="_blank" rel="noopener" class="link-btn site">
+							<span class="icon">🔗</span>
+							<span>Ver Sitio</span>
+						</a>
+					</div>
+				</article>
+			}
+		</div>
+
+		<!-- CTA Section -->
+		<div class="cta-section" animate-enter="fadeIn">
+			<h2>¿Más proyectos?</h2>
+			<p>Visita mi GitHub para ver todos mis proyectos y contribuciones</p>
+			<a href="https://github.com/bentoroal" target="_blank" rel="noopener" class="cta-button">
+				<span>Ver GitHub</span>
+				<span class="arrow">→</span>
+			</a>
+		</div>
+	</div>
+</section>
 

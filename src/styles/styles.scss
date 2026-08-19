@@ -2,15 +2,22 @@
 @use 'animations' as *;
 
 :root {
-  --topbar-height: 64px;
+  --topbar-height: 70px;
+  --accent-color: #{$color-accent};
+  --text-color: #{$color-text};
+  --bg-color: #{$color-secondary};
 }
+
 html {
-  scrollbar-gutter: stable; /* Reserva espacio para la scrollbar */
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
+
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: $font-size-base;
 }
 
 * {
@@ -22,6 +29,7 @@ html, body {
   src: url('../assets/fonts/misans_regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -29,6 +37,7 @@ html, body {
   src: url('../assets/fonts/misans_medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -36,11 +45,161 @@ html, body {
   src: url('../assets/fonts/misans_bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;
+  font-weight: $font-weight-regular;
   color: $color-text;
   background-color: $color-secondary;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ✨ UTILIDADES DE TIPOGRAFÍA
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: $font-size-2xl;
+}
+
+h4 {
+  font-size: $font-size-xl;
+}
+
+h5 {
+  font-size: $font-size-lg;
+}
+
+h6 {
+  font-size: $font-size-base;
+}
+
+p {
+  margin: 0;
+  color: $color-text;
+}
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-accent-dark;
+  }
+
+  &:focus {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+// ✨ CONTENEDOR PRINCIPAL
+.main-content {
+  margin-top: var(--topbar-height);
+  min-height: calc(100vh - var(--topbar-height));
+  background: linear-gradient(135deg, $color-secondary 0%, #f1f5f9 100%);
+}
+
+// ✨ UTILIDADES GENERALES
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @media (max-width: 768px) {
+    padding: 0 $spacing-md;
+  }
+}
+
+.section {
+  padding: $spacing-4xl $spacing-lg;
+
+  @media (max-width: 768px) {
+    padding: $spacing-3xl $spacing-md;
+  }
+
+  &:nth-child(even) {
+    background-color: $color-primary;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $color-secondary;
+    }
+
+    p {
+      color: $color-secondary-dark;
+    }
+  }
+}
+
+// ✨ UTILIDADES DE ESPACIADO
+.mt-xs { margin-top: $spacing-xs; }
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+.mt-2xl { margin-top: $spacing-2xl; }
+
+.mb-xs { margin-bottom: $spacing-xs; }
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+.mb-2xl { margin-bottom: $spacing-2xl; }
+
+.px-lg { padding: 0 $spacing-lg; }
+.py-lg { padding: $spacing-lg 0; }
+
+// ✨ UTILIDADES DE CURSOR Y TRANSICIÓN
+button, [role="button"], a {
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.transition-smooth {
+  transition: all $transition-base;
+}
+
+.transition-fast {
+  transition: all $transition-fast;
+}
+
+// ✨ UTILIDADES DE SCROLL
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-accent;
+  border-radius: $border-radius-full;
+
+  &:hover {
+    background: $color-accent-dark;
+  }
 }

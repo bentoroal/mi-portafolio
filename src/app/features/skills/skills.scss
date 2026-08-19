@@ -1,71 +1,237 @@
 @use 'sass:color';
 @use 'tokens' as *;
 
+:host {
+  animation: fadeIn 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .skills-section {
-  padding: $spacing-lg;
-  max-width: 1000px;
+  padding: $spacing-4xl $spacing-lg;
+  background: linear-gradient(135deg, $color-primary 0%, #1a1f3a 100%);
+
+  @media (max-width: 768px) {
+    padding: $spacing-3xl $spacing-md;
+  }
+  @media (max-width: 480px) {
+    padding: $spacing-2xl $spacing-md;
+  }}
+
+.container {
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+// ============================================
+// SECTION HEADER
+// ============================================
+
+.section-header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .accent-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, $color-accent, $color-accent-light);
+    border-radius: $border-radius-full;
+    margin: 0 auto $spacing-lg;
+  }
 
   h1 {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    color: $color-secondary;
+    margin-bottom: $spacing-md;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: $font-size-lg;
+    color: $color-secondary-dark;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+// ============================================
+// SKILLS GRID
+// ============================================
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-4xl;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+
+  @media (max-width: 480px) {
+    gap: $spacing-md;
+  }
+}
+
+.skill-category-card {
+  background: white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  box-shadow: $box-shadow-lg;
+  transition: all $transition-base;
+  overflow: hidden;
+  position: relative;
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $color-accent, $color-accent-light);
+  }
+
+  &:hover {
+    box-shadow: $box-shadow-2xl;
+    transform: translateY(-8px);
+
+    .category-header h3 {
+      color: $color-accent;
+    }
+  }
+
+  &[data-index="0"] { animation-delay: 0ms; }
+  &[data-index="1"] { animation-delay: 100ms; }
+  &[data-index="2"] { animation-delay: 200ms; }
+  &[data-index="3"] { animation-delay: 300ms; }
+  &[data-index="4"] { animation-delay: 400ms; }
+  &[data-index="5"] { animation-delay: 500ms; }
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-lg;
+  border-bottom: 2px solid $color-secondary;
+
+  h3 {
+    font-size: $font-size-xl;
+    color: $color-primary;
+    margin: 0;
+    transition: color $transition-fast;
+  }
+
+  .item-count {
+    background: linear-gradient(135deg, $color-accent, $color-accent-light);
+    color: white;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius-full;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.skills-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.skill-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-dark 100%);
+  color: $color-primary;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+  cursor: default;
+  animation: scaleIn 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: linear-gradient(135deg, $color-accent, $color-accent-light);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: $box-shadow-md;
+  }
+}
+
+// ============================================
+// PROFICIENCY SECTION
+// ============================================
+
+.proficiency-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: $border-radius-xl;
+  padding: $spacing-3xl;
+  animation: fadeIn 800ms cubic-bezier(0.4, 0, 0.2, 1) 300ms both;
+
+  @media (max-width: 768px) {
+    padding: $spacing-2xl;
+  }
+
+  h2 {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    margin-bottom: $spacing-2xl;
     text-align: center;
-    margin-bottom: $spacing-lg;
+  }
+}
+
+.proficiency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-2xl;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.proficiency-item {
+  animation: slideInUp 600ms cubic-bezier(0.4, 0, 0.2, 1) 400ms both;
+}
+
+.proficiency-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+
+  span:first-child {
+    font-weight: $font-weight-semibold;
     color: $color-text;
+  }
+
+  .level {
+    font-size: $font-size-sm;
+    color: $color-accent;
     font-weight: $font-weight-bold;
   }
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: $spacing-md;
-}
+.proficiency-bar {
+  height: 8px;
+  background-color: $color-secondary-dark;
+  border-radius: $border-radius-full;
+  overflow: hidden;
+  position: relative;
 
-.skill-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  padding: $spacing-md;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-  }
-
-  h3 {
-    margin-bottom: $spacing-sm;
-    color: $color-text;
-    font-size: 1.2rem;
-    border-bottom: 2px solid rgba($color-primary, 0.2);
-    padding-bottom: 4px;
-  }
-
-  .badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: $spacing-sm;
-  }
-
-  .badge {
-    background: color.scale($color-primary, $lightness: 60%);
-    color: $color-secondary;
-    font-weight: $font-weight-medium;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background: $color-primary;
-      color: white;
-      transform: scale(1.05);
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  .skills-section {
-    padding: $spacing-md;
+  .progress {
+    height: 100%;
+    background: linear-gradient(90deg, $color-accent, $color-accent-light);
+    border-radius: $border-radius-full;
+    animation: slideInLeft 800ms cubic-bezier(0.4, 0, 0.2, 1) 600ms both;
+    box-shadow: $box-shadow-sm;
   }
 }
